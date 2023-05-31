@@ -2,10 +2,10 @@ import { Address } from "./address";
 
 export class Customer {
 
-    _id: string = "";
-    _name: string = ""
-    _address!: Address
-    _active: boolean = false
+    private _id: string = "";
+    private _name: string = ""
+    private _address!: Address
+    private _active: boolean = false
 
     constructor(id: string, name: string) {
         this._id = id
@@ -29,7 +29,7 @@ export class Customer {
     }
 
     activate () {
-        if (!!this._address) {
+        if (!this._address) {
             throw new Error("Address is required")
         }
 
@@ -42,5 +42,13 @@ export class Customer {
 
     set Address (address: Address) {
         this._address = address
+    }
+
+    get name (): string {
+        return this._name
+    }
+
+    isActive (): boolean {
+        return this._active
     }
 }
