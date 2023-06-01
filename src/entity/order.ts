@@ -16,7 +16,7 @@ export class Order {
     }
 
     total (): number {
-        return this._items.reduce((acc, item) => acc + item._price, 0)
+        return this._items.reduce((acc, item) => acc + item.orderItemTotal(), 0)
     }
 
     validate () {
@@ -30,6 +30,10 @@ export class Order {
 
         if (this._items.length === 0) {
             throw new Error('Items quantity must be greater than 0')
+        }
+
+        if (this._items.some(item => item.quantity <= 0)) {
+            throw new Error('Item quantity must be greater than zero')
         }
     }
 }
