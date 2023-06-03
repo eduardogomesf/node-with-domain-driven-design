@@ -36,4 +36,16 @@ export class Order {
             throw new Error('Item quantity must be greater than zero')
         }
     }
+
+    get items () {
+        return this._items
+    }
+
+    get id () {
+        return this._id
+    }
+
+    get customerId () {
+        return this._customerId
+    }
 }
