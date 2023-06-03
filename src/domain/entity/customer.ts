@@ -18,6 +18,10 @@ export class Customer {
         this._address = address
     }
 
+    get Address () {
+        return this._address
+    }
+
     get name (): string {
         return this._name
     }
@@ -63,5 +67,9 @@ export class Customer {
 
     addRewardPoints (points: number) {
         this._rewardPoints += points
+    }
+
+    changeAddress (address: Address) {
+        this._address = address;
     }
 }
