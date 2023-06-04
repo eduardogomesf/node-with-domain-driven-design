@@ -111,7 +111,7 @@ describe("Order repository test", () => {
         expect(orderById).toStrictEqual(order)
     })
 
-    it('should a list of orders', async () => {
+    it('should get a list of orders', async () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer("123", "Customer 1");
         const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
