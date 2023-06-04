@@ -26,7 +26,7 @@ describe('Order unit tests', () => {
         const item2 = new OrderItem('i2', 'Item 2', 200, 'p2', 2)
 
         const order = new Order('o1', 'c1', [item, item2])
-        const total = order.total()
+        const total = order.getTotal()
         expect(total).toBe(600)
     })
 

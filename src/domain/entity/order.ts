@@ -11,11 +11,11 @@ export class Order {
         this._id = id
         this._customerId = customerId
         this._items = items
-        this._total = this.total()
+        this._total = this.getTotal()
         this.validate()
     }
 
-    total (): number {
+    getTotal (): number {
         return this._items.reduce((acc, item) => acc + item.orderItemTotal(), 0)
     }
 
@@ -37,6 +37,11 @@ export class Order {
         }
     }
 
+    addItem (item: OrderItem) {
+        this._items.push(item)
+        this._total = this.getTotal()
+    }
+
     get items () {
         return this._items
     }
@@ -47,5 +52,9 @@ export class Order {
 
     get customerId () {
         return this._customerId
+    }
+
+    get total () {
+        return this._total
     }
 }

@@ -6,7 +6,7 @@ import { OrderItem } from "../entity/order_item";
 export class OrderService {
 
     static total (orders: Order[]) {
-        return orders.reduce((acc, order) => acc + order.total(), 0)
+        return orders.reduce((acc, order) => acc + order.getTotal(), 0)
     }
 
     static placeOrder (customer: Customer, items: OrderItem[]): Order {
@@ -16,7 +16,7 @@ export class OrderService {
 
         const order = new Order(uuid(), customer.id, items)
 
-        customer.addRewardPoints(order.total() / 2)
+        customer.addRewardPoints(order.getTotal() / 2)
 
         return order
     }
