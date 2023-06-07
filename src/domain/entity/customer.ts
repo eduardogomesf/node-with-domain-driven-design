@@ -85,6 +85,6 @@ export class Customer {
             name: this._name,
             address: this._address
         })
-        this.eventDispatcher.notify(changeAddressEvent)
+        this.eventDispatcher?.notify(changeAddressEvent)
     }
 }
