@@ -1,7 +1,8 @@
 import { EventHandlerInterface } from "../../@shared/event-handler.interface";
 import { EventInterface } from "../../@shared/event.interface";
+import { ChangeAddressEvent } from "../change-address.event";
 
-export class EnviaConsoleLogHandler implements EventHandlerInterface {
+export class EnviaConsoleLogHandler implements EventHandlerInterface<ChangeAddressEvent> {
     handle (event: EventInterface): void {
         const { eventData } = event
         const { id, name, address } = eventData
