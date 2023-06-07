@@ -215,6 +215,14 @@ describe("Order repository test", () => {
                     order_id: "123",
                     product_id: "123",
                 },
+                {
+                    id: orderItemTwo.id,
+                    name: orderItemTwo.name,
+                    price: orderItemTwo.price,
+                    quantity: orderItemTwo.quantity,
+                    order_id: "123",
+                    product_id: "123",
+                },
             ],
         });
     });
