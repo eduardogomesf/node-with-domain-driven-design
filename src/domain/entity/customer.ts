@@ -1,4 +1,5 @@
 import { EventDistpacherInterface } from "../event/@shared/event-dispatcher.interface";
+import { ChangeAddressEvent } from "../event/customer/change-address.event";
 import { CustomerCreatedEvent } from "../event/customer/customer-created.event";
 import { Address } from "./address";
 
@@ -15,7 +16,6 @@ export class Customer {
         this._id = id
         this._name = name
         this.validate()
-
 
         this.eventDispatcher = eventDispatcher
 
@@ -80,5 +80,11 @@ export class Customer {
 
     changeAddress (address: Address) {
         this._address = address;
+        const changeAddressEvent = new ChangeAddressEvent({
+            id: this._id,
+            name: this._name,
+            address: this._address
+        })
+        this.eventDispatcher.notify(changeAddressEvent)
     }
 }

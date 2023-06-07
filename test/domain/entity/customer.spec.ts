@@ -3,6 +3,7 @@ import { Customer } from '../../../src/domain/entity/customer'
 import { EventDispatcher } from '../../../src/domain/event/@shared/event-dispatcher'
 import { EnviaConsoleLog1Handler } from '../../../src/domain/event/customer/handler/envia-console-log-1.handler'
 import { EnviaConsoleLog2Handler } from '../../../src/domain/event/customer/handler/envia-console-log-2.handler'
+import { EnviaConsoleLogHandler } from '../../../src/domain/event/customer/handler/envia-console-log.handler'
 
 describe('Customer unit tests', () => {
 
@@ -84,6 +85,23 @@ describe('Customer unit tests', () => {
         expect(customer).toBeDefined()
         expect(firstHandleSpy).toHaveBeenCalled()
         expect(secondHandleSpy).toHaveBeenCalled()
+    })
+
+    it('should call event handlers when changing the address of a customer', () => {
+        const eventDispatcher = new EventDispatcher()
+        const enviaConsoleLogHandler = new EnviaConsoleLogHandler()
+
+        eventDispatcher.register("ChangeAddressEvent", enviaConsoleLogHandler)
+
+        const handleSpy = jest.spyOn(enviaConsoleLogHandler, 'handle')
+
+        const customer = new Customer('1', 'Customer 1', eventDispatcher)
+        const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+
+        customer.changeAddress(address);
+
+        expect(customer).toBeDefined()
+        expect(handleSpy).toHaveBeenCalled()
     })
 
 })
