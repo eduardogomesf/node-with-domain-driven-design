@@ -1,17 +1,26 @@
+import { EventDistpacherInterface } from "../event/@shared/event-dispatcher.interface";
+import { CustomerCreatedEvent } from "../event/customer/customer-created.event";
 import { Address } from "./address";
 
 export class Customer {
-
     private _id: string = "";
     private _name: string = ""
     private _address!: Address
     private _active: boolean = false
     private _rewardPoints: number = 0
 
-    constructor(id: string, name: string) {
+    private eventDispatcher: EventDistpacherInterface
+
+    constructor(id: string, name: string, eventDispatcher?: EventDistpacherInterface) {
         this._id = id
         this._name = name
         this.validate()
+
+
+        this.eventDispatcher = eventDispatcher
+
+        const customerCreatedEvent = new CustomerCreatedEvent({ name, id })
+        this.eventDispatcher?.notify(customerCreatedEvent)
     }
 
     set Address (address: Address) {

@@ -1,5 +1,8 @@
 import { Address } from '../../../src/domain/entity/address'
 import { Customer } from '../../../src/domain/entity/customer'
+import { EventDispatcher } from '../../../src/domain/event/@shared/event-dispatcher'
+import { EnviaConsoleLog1Handler } from '../../../src/domain/event/customer/handler/envia-console-log-1.handler'
+import { EnviaConsoleLog2Handler } from '../../../src/domain/event/customer/handler/envia-console-log-2.handler'
 
 describe('Customer unit tests', () => {
 
@@ -63,6 +66,24 @@ describe('Customer unit tests', () => {
 
         customer.addRewardPoints(10)
         expect(customer.rewardPoints).toBe(20)
+    })
+
+    it('should call event handlers when creating a new customer', () => {
+        const eventDispatcher = new EventDispatcher()
+        const enviaConsoleLog1Handler = new EnviaConsoleLog1Handler()
+        const enviaConsoleLog2Handler = new EnviaConsoleLog2Handler()
+
+        eventDispatcher.register("CustomerCreatedEvent", enviaConsoleLog1Handler)
+        eventDispatcher.register("CustomerCreatedEvent", enviaConsoleLog2Handler)
+
+        const firstHandleSpy = jest.spyOn(enviaConsoleLog1Handler, 'handle')
+        const secondHandleSpy = jest.spyOn(enviaConsoleLog2Handler, 'handle')
+
+        const customer = new Customer('1', 'Customer 1', eventDispatcher)
+
+        expect(customer).toBeDefined()
+        expect(firstHandleSpy).toHaveBeenCalled()
+        expect(secondHandleSpy).toHaveBeenCalled()
     })
 
 })
