@@ -3,13 +3,10 @@ import { Order, OrderItem } from "../../../../../src/domain/checkout/entity";
 import { Customer } from "../../../../../src/domain/customer/entity";
 import { Address } from "../../../../../src/domain/customer/value-object";
 import { Product } from "../../../../../src/domain/product/entity";
-import { CustomerModel } from "../../../../../src/infra/db/sequelize/model/customer.model";
-import { CustomerRepository } from "../../../../../src/infra/db/sequelize/repository/customer.repository";
-import { ProductModel } from "../../../../../src/infra/db/sequelize/model/product.model";
-import { ProductRepository } from "../../../../../src/infra/db/sequelize/repository/product.repository";
-import { OrderItemModel } from "../../../../../src/infra/db/sequelize/model/order_item.model";
-import { OrderModel } from "../../../../../src/infra/db/sequelize/model/order.model";
-import { OrderRepository } from "../../../../../src/infra/db/sequelize/repository/order.repository";
+import { OrderItemModel, OrderModel, OrderRepository } from "../../../../../src/infra/checkout/repository/sequelize";
+import { ProductModel, ProductRepository } from "../../../../../src/infra/product/repository/sequelize";
+import { CustomerModel, CustomerRepository } from "../../../../../src/infra/customer/repository/sequelize";
+
 
 describe("Order repository test", () => {
     let sequelize: Sequelize;

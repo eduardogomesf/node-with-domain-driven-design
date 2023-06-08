@@ -1,7 +1,7 @@
 import { Customer } from "../../../../domain/customer/entity/customer";
 import { Address } from "../../../../domain/customer/value-object";
 import { CustomerRepositoryInterface } from "../../../../domain/customer/repository/customer_repository.interface";
-import { CustomerModel } from "../model/customer.model";
+import { CustomerModel } from "./customer.model";
 
 export class CustomerRepository implements CustomerRepositoryInterface {
     async create (entity: Customer): Promise<void> {
