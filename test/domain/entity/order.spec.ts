@@ -1,5 +1,4 @@
-import { Order } from '../../../src/domain/entity/order'
-import { OrderItem } from '../../../src/domain/entity/order_item'
+import { Order, OrderItem } from '../../../src/domain/checkout/entity'
 
 describe('Order unit tests', () => {
 

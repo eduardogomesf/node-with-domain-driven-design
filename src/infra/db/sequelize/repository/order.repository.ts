@@ -1,8 +1,7 @@
-import { Order } from "../../../../domain/entity/order";
+import { Order, OrderItem } from "../../../../domain/checkout/entity";
+import { OrderRepositoryInterface } from "../../../../domain/checkout/repository";
 import { OrderItemModel } from "../model/order_item.model";
 import { OrderModel } from "../model/order.model";
-import { OrderRepositoryInterface } from "../../../../domain/repository/order.repository";
-import { OrderItem } from "../../../../domain/entity/order_item";
 
 export class OrderRepository implements OrderRepositoryInterface {
     async update (entity: Order): Promise<void> {

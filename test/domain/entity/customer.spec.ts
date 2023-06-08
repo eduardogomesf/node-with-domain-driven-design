@@ -1,9 +1,7 @@
-import { Address } from '../../../src/domain/entity/address'
-import { Customer } from '../../../src/domain/entity/customer'
-import { EventDispatcher } from '../../../src/domain/event/@shared/event-dispatcher'
-import { EnviaConsoleLog1Handler } from '../../../src/domain/event/customer/handler/envia-console-log-1.handler'
-import { EnviaConsoleLog2Handler } from '../../../src/domain/event/customer/handler/envia-console-log-2.handler'
-import { EnviaConsoleLogHandler } from '../../../src/domain/event/customer/handler/envia-console-log.handler'
+import { Customer } from '../../../src/domain/customer/entity'
+import { Address } from '../../../src/domain/customer/value-object'
+import { EventDispatcher } from '../../../src/domain/@shared/event/event-dispatcher'
+import { EnviaConsoleLog1Handler, EnviaConsoleLog2Handler, EnviaConsoleLogHandler } from '../../../src/domain/customer/event/handler'
 
 describe('Customer unit tests', () => {
 

@@ -1,6 +1,6 @@
-import { Customer } from "../../../../domain/entity/customer";
-import { Address } from "../../../../domain/entity/address";
-import { CustomerRepositoryInterface } from "../../../../domain/repository/customer_repository.interface";
+import { Customer } from "../../../../domain/customer/entity/customer";
+import { Address } from "../../../../domain/customer/value-object";
+import { CustomerRepositoryInterface } from "../../../../domain/customer/repository/customer_repository.interface";
 import { CustomerModel } from "../model/customer.model";
 
 export class CustomerRepository implements CustomerRepositoryInterface {
