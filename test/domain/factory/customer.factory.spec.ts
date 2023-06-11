@@ -1,5 +1,5 @@
-import { Address } from "../value-object"
-import { CustomerFactory } from "./customer.factory"
+import { Address } from "../../../src/domain/customer/value-object"
+import { CustomerFactory } from "../../../src/domain/customer/factory/customer.factory"
 
 describe('Customer factory unit tests', () => {
 
